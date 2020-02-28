@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ImportAuthorCommand;
+use App\Console\Commands\ImportCategoryCommand;
+use App\Console\Commands\ImportCustomerCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +16,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        ImportCategoryCommand::class,
+        ImportAuthorCommand::class,
+        ImportCustomerCommand::class,
     ];
 
     /**
