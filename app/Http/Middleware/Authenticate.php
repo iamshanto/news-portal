@@ -35,8 +35,14 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($this->auth->guard($guard)->guest()) {
+        /** @var \Tymon\JWTAuth\JWTGuard $jwtGuard */
+        $jwtGuard = $this->auth->guard($guard);
+        if ($jwtGuard->guest()) {
             return response('Unauthorized.', 401);
+        }
+
+        if (!\Illuminate\Support\Facades\Auth::user()) {
+            \Illuminate\Support\Facades\Auth::setUser($jwtGuard->user());
         }
 
         return $next($request);
