@@ -23,7 +23,7 @@ class Author extends Model implements AuthenticatableContract, AuthorizableContr
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'is_professional'
+        'name', 'email', 'password', 'is_professional'
     ];
 
     /**
